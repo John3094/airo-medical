@@ -35,9 +35,10 @@ export const useBeerStore = create((set, get) => ({
     const newList = [...get().removeList, id];
     set({ removeList: newList });
   },
-  removeBeers: removes => {
-    removes.map(remove => {
-      const newRecipes = get().beers.filter(beer => beer.id !== remove);
+ removeBeers: (removes) => {
+    // eslint-disable-next-line array-callback-return
+    removes.map((remove) => {
+      const newRecipes = get().beers.filter((beer) => beer.id !== remove);
       set({ beers: newRecipes });
       set({ removeList: [] });
     });
